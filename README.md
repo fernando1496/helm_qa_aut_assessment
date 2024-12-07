@@ -1,3 +1,4 @@
+
 # Selenium Test Automation Framework helm_qa_aut_assessment
 
 ## Introduction
@@ -69,6 +70,44 @@ Follow these steps to set up your environment:
 
    This will open the Allure report in your default browser.
 
+## Allure Installation
+
+Allure is required locally for generating and viewing the test reports. Follow these steps to install Allure:
+
+### Install Allure Command-Line Tool
+
+- **On MacOS**:
+  ```bash
+  brew install allure
+  ```
+
+- **On Ubuntu/Debian**:
+  ```bash
+  sudo apt-add-repository ppa:qameta/allure
+  sudo apt-get update
+  sudo apt-get install allure
+  ```
+
+- **On Windows**:
+   - Download Allure binaries from [Allure's GitHub releases](https://github.com/allure-framework/allure2/releases).
+   - Extract the archive.
+   - Add the `bin` folder to your system `PATH`.
+
+### Verify Installation
+Run the following command:
+```bash
+allure --version
+```
+This should return the installed Allure version.
+
+### Generate Allure Report
+Navigate to the directory containing the `allure-results` folder and run:
+```bash
+allure serve allure-results
+```
+
+This will start a local server and display the test report.
+
 ## Improvements
 
 - **Behavior-Driven Development (BDD)**: Implement test scenarios using Cucumber or JBehave for improved readability and collaboration.
@@ -81,4 +120,3 @@ Follow these steps to set up your environment:
 
 This framework is designed to be scalable, modular, and easy to use, providing a solid foundation for web automation testing.
 Feel free to fork this repository and suggest enhancements to make it even better!
-
