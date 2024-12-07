@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Regression Suite" parallel="false">
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+    <test name="Regression Tests">
+        <classes>
+            <class name="tests.LoginTests"/>
+            <class name="tests.ProductsTests"/>
+            <class name="tests.CartTests"/>
+            <class name="tests.CheckoutTests"/>
+        </classes>
+    </test>
+</suite>

@@ -5,11 +5,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+/**
+ * Manages the WebDriver instance lifecycle for the tests.
+ * Provides methods to initialize, retrieve, and quit the WebDriver.
+ */
 public class DriverManager {
 
+    // Singleton WebDriver instance
     private static WebDriver driver;
 
-    // Initializes the WebDriver instance
+    /**
+     * Initializes the WebDriver instance if it is null.
+     * Configures ChromeDriver with WebDriverManager and custom options.
+     */
     public static void initializeDriver() {
         if (driver == null) {
             WebDriverManager.chromedriver().browserVersion("latest").setup();
@@ -20,7 +28,12 @@ public class DriverManager {
         }
     }
 
-    // Returns the current WebDriver instance
+    /**
+     * Retrieves the current WebDriver instance.
+     * Initializes the WebDriver if it has not been created yet.
+     *
+     * @return The current WebDriver instance.
+     */
     public static WebDriver getDriver() {
         if (driver == null) {
             initializeDriver();
@@ -28,11 +41,14 @@ public class DriverManager {
         return driver;
     }
 
-    // Quits and nullifies the WebDriver instance
+    /**
+     * Quits the WebDriver instance and sets it to null.
+     * Ensures the instance is not reused after being quit.
+     */
     public static void quitDriver() {
         if (driver != null) {
             driver.quit();
-            driver = null; // Reset the instance to ensure no reuse of stale driver
+            driver = null;
         }
     }
 }

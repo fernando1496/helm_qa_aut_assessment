@@ -15,34 +15,35 @@
     </properties>
 
     <dependencies>
-        <!-- Selenium WebDriver -->
+        <!-- Selenium WebDriver: Provides support for automated browser testing -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.15.0</version>
         </dependency>
 
-        <!-- TestNG for testing -->
+        <!-- TestNG: A testing framework for organizing and running tests -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.7.1</version>
         </dependency>
 
-        <!-- WebDriver Manager -->
+        <!-- WebDriver Manager: Simplifies driver management for Selenium -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>5.5.3</version>
         </dependency>
 
-        <!-- Allure TestNG Integration -->
+        <!-- Allure TestNG Integration: For generating detailed test reports -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>2.21.0</version>
         </dependency>
 
+        <!-- Java Dotenv: Loads environment variables from a .env file -->
         <dependency>
             <groupId>io.github.cdimascio</groupId>
             <artifactId>java-dotenv</artifactId>
@@ -51,6 +52,7 @@
     </dependencies>
 
     <repositories>
+        <!-- Repository for Allure-related dependencies -->
         <repository>
             <id>allure-repo</id>
             <url>https://maven.aliyun.com/nexus/content/repositories/central/</url>
@@ -59,15 +61,20 @@
 
     <build>
         <plugins>
-            <!-- Surefire plugin to run TestNG tests -->
+            <!-- Maven Surefire Plugin: Executes TestNG tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
+                    <!-- Specifies the test suite XML file -->
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/regression-suite.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <!-- Specifies the output directory for Allure results -->
+                    <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
